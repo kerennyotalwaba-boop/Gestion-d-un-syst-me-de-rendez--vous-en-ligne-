@@ -1,0 +1,186 @@
+<!DOCTYPE html><html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestion des rendez-vous</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f4f6f9;
+    }header {
+  background: #2c3e50;
+  color: white;
+  padding: 15px;
+  text-align: center;
+}
+
+nav {
+  background: #34495e;
+  padding: 10px;
+  text-align: center;
+}
+
+nav a {
+  color: white;
+  margin: 0 10px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+section {
+  padding: 20px;
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+h2 {
+  color: #2c3e50;
+}
+
+input, button {
+  padding: 10px;
+  margin: 5px 0;
+  width: 100%;
+}
+
+button {
+  background: #27ae60;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #219150;
+}
+
+.slot {
+  display: flex;
+  justify-content: space-between;
+  background: #ecf0f1;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 5px;
+}
+
+footer {
+  text-align: center;
+  padding: 10px;
+  background: #2c3e50;
+  color: white;
+  margin-top: 20px;
+}
+
+  </style>
+</head>
+<body><header>
+  <h1>Gestion d'un système de rendez-vous en ligne</h1>
+</header><nav>
+  <a href="#intro">Introduction</a>
+  <a href="#dev">Développement</a>
+  <a href="#description">Description</a>
+  <a href="#reservation">Réservations</a>
+  <a href="#resume">Résumé</a>
+  <a href="#conclusion">Conclusion</a>
+</nav><section id="intro">
+  <div class="container">
+    <h2>Introduction</h2>
+    <p>
+      Ce site web permet de gérer un système de rendez-vous en ligne. 
+      Il offre la possibilité de créer des créneaux horaires et de réserver facilement un rendez-vous.
+      Ce système améliore l'organisation et évite les conflits d'horaires.
+    </p>
+  </div>
+</section><section id="dev">
+  <div class="container">
+    <h2>Développement</h2>
+    <p>
+      Le site a été développé en utilisant uniquement le Front-End avec HTML pour la structure,
+      CSS pour le design et JavaScript pour la gestion dynamique des créneaux et réservations.
+    </p>
+  </div>
+</section><section id="description">
+  <div class="container">
+    <h2>Description du système</h2>
+    <p>
+      Ce système de gestion de rendez-vous permet aux utilisateurs d'ajouter des créneaux horaires disponibles
+      et de les réserver en un seul clic. Chaque créneau représente une plage horaire spécifique.
+    </p>
+    <p>
+      Lorsqu'un utilisateur clique sur "Réserver", le créneau devient indisponible, ce qui évite les doubles réservations.
+      Cette simulation représente le fonctionnement d'un vrai système utilisé dans les hôpitaux, salons ou entreprises.
+    </p>
+    <p>
+      Le projet fonctionne entièrement côté client (front-end), sans base de données.
+      Cependant, il peut être amélioré en ajoutant un stockage des données ou une connexion utilisateur.
+    </p>
+  </div>
+</section><section id="reservation">
+  <div class="container">
+    <h2>Gestion des créneaux</h2><input type="text" id="slotInput" placeholder="Entrer un créneau (ex: 10h - 11h)">
+<button onclick="addSlot()">Ajouter un créneau</button>
+
+<div id="slots"></div>
+
+  </div>
+</section><section id="resume">
+  <div class="container">
+    <h2>Résumé</h2>
+    <p>
+      Ce projet montre comment créer un système simple de gestion de rendez-vous en ligne.
+      L'utilisateur peut ajouter des créneaux et effectuer des réservations facilement.
+    </p>
+  </div>
+</section><section id="conclusion">
+  <div class="container">
+    <h2>Conclusion</h2>
+    <p>
+      La gestion des rendez-vous en ligne est essentielle pour améliorer la productivité.
+      Ce système peut être amélioré en ajoutant une base de données ou une authentification.
+    </p>
+  </div>
+</section><footer>
+  <p>Projet réalisé en HTML, CSS et JavaScript</p>
+</footer><script>
+  function addSlot() {
+    const input = document.getElementById("slotInput");
+    const value = input.value;
+
+    if (value === "") {
+      alert("Veuillez entrer un créneau");
+      return;
+    }
+
+    const container = document.getElementById("slots");
+
+    const div = document.createElement("div");
+    div.className = "slot";
+
+    const text = document.createElement("span");
+    text.textContent = value;
+
+    const btn = document.createElement("button");
+    btn.textContent = "Réserver";
+    btn.onclick = function () {
+      btn.textContent = "Réservé";
+      btn.disabled = true;
+      btn.style.background = "red";
+    };
+
+    div.appendChild(text);
+    div.appendChild(btn);
+
+    container.appendChild(div);
+
+    input.value = "";
+  }
+</script></body>
+</html>
